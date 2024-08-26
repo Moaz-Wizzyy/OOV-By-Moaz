@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حساب عدد الأيام بين تاريخين</title>
+</head>
+<body>
+    <h2>احسب عدد الأيام بين تاريخين</h2>
+    <label for="startDate">اختر التاريخ الأول:</label>
+    <input type="date" id="startDate">
+    <br><br>
+    <label for="endDate">اختر التاريخ الثاني:</label>
+    <input type="date" id="endDate">
+    <br><br>
+    <button onclick="calculateDays()">احسب الأيام</button>
+    <br><br>
+    <p id="result"></p>
+
+    <script>
+        function calculateDays() {
+            var startDate = new Date(document.getElementById("startDate").value);
+            var endDate = new Date(document.getElementById("endDate").value);
+
+            // التأكد من أن التواريخ صالحة
+            if (startDate && endDate && endDate >= startDate) {
+                var timeDifference = endDate.getTime() - startDate.getTime();
+                var dayDifference = timeDifference / (1000 * 3600 * 24);
+                document.getElementById("result").innerHTML = "عدد الأيام: " + dayDifference + " أيام";
+            } else {
+                document.getElementById("result").innerHTML = "يرجى التأكد من اختيار تواريخ صحيحة.";
+            }
+        }
+    </script>
+</body>
+</html>
